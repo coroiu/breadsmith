@@ -1,3 +1,22 @@
 <h1 class="text-xl mb-2">Calculator</h1>
 
-<p-inputnumber inputId="integeronly" [(ngModel)]="value" />
+@for (ingredientType of data().ingredientTypes; track ingredientType) {
+<div class="mb-4">
+  <h2 class="mb-2">{{ ingredientType.name }}</h2>
+  @for (ingredient of ingredientType.ingredients; track ingredient) {
+  <p-inputgroup class="mb-2">
+    <p-iftalabel>
+      <p-inputnumber
+        inputId="{{ ingredientType }}-{{ ingredient }}"
+        [(ngModel)]="value"
+      />
+      <label for="{{ ingredientType }}-{{ ingredient }}">{{
+        ingredient.name
+      }}</label>
+    </p-iftalabel>
+
+    <p-inputgroup-addon>grams</p-inputgroup-addon>
+  </p-inputgroup>
+  }
+</div>
+}
