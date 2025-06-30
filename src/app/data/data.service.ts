@@ -2,8 +2,9 @@ import { Injectable, signal } from "@angular/core";
 import { Recipe } from "./recipe";
 
 const recipe: Recipe = {
+  flourAmount: 500,
   ingredients: [
-    { name: "Flour", amount: 500, type: "flour" },
+    { name: "White flour", amount: 100, type: "flour" },
     { name: "Water", amount: 300, type: "water" },
     { name: "Salt", amount: 10, type: "other" },
     { name: "Yeast", amount: 5, type: "other" },

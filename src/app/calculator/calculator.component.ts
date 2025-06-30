@@ -4,11 +4,26 @@ import { IngredientType, IngredientTypes } from "../data/recipe";
 import { UiData } from "./ui-data";
 import { CommonModule } from "@angular/common";
 import { IngredientGroupComponent } from "./ingredient-group/ingredient-group.component";
+import { FormsModule } from "@angular/forms";
+import { InputNumberModule } from "primeng/inputnumber";
+import { InputGroupModule } from "primeng/inputgroup";
+import { InputGroupAddonModule } from "primeng/inputgroupaddon";
+import { FloatLabelModule } from "primeng/floatlabel";
+import { FieldsetModule } from "primeng/fieldset";
 
 @Component({
   selector: "app-calculator",
   templateUrl: "./calculator.component.html",
-  imports: [CommonModule, IngredientGroupComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    InputNumberModule,
+    InputGroupModule,
+    InputGroupAddonModule,
+    FloatLabelModule,
+    FieldsetModule,
+    IngredientGroupComponent,
+  ],
 })
 export class CalculatorComponent {
   private dataService = inject(DataService);
@@ -17,6 +32,7 @@ export class CalculatorComponent {
     const recipe = this.dataService.getRecipe("default")();
 
     return {
+      flourAmount: recipe.flourAmount,
       ingredientTypes: IngredientTypes.map((type) => {
         const ingredients = recipe.ingredients
           .filter((ingredient) => ingredient.type === type)

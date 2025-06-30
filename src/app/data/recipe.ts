@@ -1,13 +1,13 @@
 export interface Recipe {
   ingredients: Ingredient[];
+  flourAmount: number;
 }
 
-export interface Ingredient {
+export type Ingredient = {
   name: string;
   amount: number;
-  // unit: string; everything is in grams for now
   type: IngredientType;
-}
+};
 
 const IngredientType = {
   Flour: "flour",

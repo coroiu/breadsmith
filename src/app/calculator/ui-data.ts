@@ -1,6 +1,7 @@
 import { IngredientType } from "../data/recipe";
 
 export interface UiData {
+  flourAmount: number;
   ingredientTypes: UiIngredientType[];
 }
 
