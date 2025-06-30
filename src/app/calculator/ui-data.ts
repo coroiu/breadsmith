@@ -7,6 +7,7 @@ export interface UiData {
 export interface UiIngredientType {
   name: string;
   value: IngredientType;
+  total: number;
   ingredients: UiIngredient[];
 }
 

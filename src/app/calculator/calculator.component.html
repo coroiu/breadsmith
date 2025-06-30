@@ -4,19 +4,33 @@
 <div class="mb-4">
   <h2 class="mb-2">{{ ingredientType.name }}</h2>
   @for (ingredient of ingredientType.ingredients; track ingredient) {
-  <p-inputgroup class="mb-2">
-    <p-iftalabel>
-      <p-inputnumber
-        inputId="{{ ingredientType }}-{{ ingredient }}"
-        [(ngModel)]="value"
-      />
-      <label for="{{ ingredientType }}-{{ ingredient }}">{{
-        ingredient.name
-      }}</label>
-    </p-iftalabel>
+  <p-fieldset class="mb-2" legend="{{ ingredient.name }}">
+    <div class="flex flex-row gap-6">
+      <p-inputgroup>
+        <p-floatlabel variant="on">
+          <p-inputnumber
+            inputId="{{ ingredientType }}-{{ ingredient }}"
+            [ngModel]="ingredient.amount"
+          />
+          <label for="{{ ingredientType }}-{{ ingredient }}">Percentage</label>
+        </p-floatlabel>
 
-    <p-inputgroup-addon>grams</p-inputgroup-addon>
-  </p-inputgroup>
+        <p-inputgroup-addon>%</p-inputgroup-addon>
+      </p-inputgroup>
+
+      <p-inputgroup>
+        <p-floatlabel variant="on">
+          <p-inputnumber
+            inputId="{{ ingredientType }}-{{ ingredient }}"
+            [ngModel]="ingredient.amount"
+          />
+          <label for="{{ ingredientType }}-{{ ingredient }}">Weight</label>
+        </p-floatlabel>
+
+        <p-inputgroup-addon>g</p-inputgroup-addon>
+      </p-inputgroup>
+    </div>
+  </p-fieldset>
   }
 </div>
 }
