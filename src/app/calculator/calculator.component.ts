@@ -1,27 +1,14 @@
 import { Component, computed, inject } from "@angular/core";
-import { FormsModule } from "@angular/forms";
-import { InputNumberModule } from "primeng/inputnumber";
-import { InputGroupModule } from "primeng/inputgroup";
-import { InputGroupAddonModule } from "primeng/inputgroupaddon";
-import { FloatLabelModule } from "primeng/floatlabel";
-import { FieldsetModule } from "primeng/fieldset";
 import { DataService } from "../data/data.service";
 import { IngredientType, IngredientTypes } from "../data/recipe";
 import { UiData } from "./ui-data";
 import { CommonModule } from "@angular/common";
+import { IngredientGroupComponent } from "./ingredient-group/ingredient-group.component";
 
 @Component({
   selector: "app-calculator",
   templateUrl: "./calculator.component.html",
-  imports: [
-    CommonModule,
-    FormsModule,
-    InputNumberModule,
-    InputGroupModule,
-    InputGroupAddonModule,
-    FloatLabelModule,
-    FieldsetModule,
-  ],
+  imports: [CommonModule, IngredientGroupComponent],
 })
 export class CalculatorComponent {
   private dataService = inject(DataService);

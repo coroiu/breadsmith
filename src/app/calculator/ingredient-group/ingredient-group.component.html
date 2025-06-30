@@ -1,0 +1,4 @@
+<h2 class="mb-2">{{ ingredientType().name }}</h2>
+@for (ingredient of ingredientType().ingredients; track ingredient) {
+<app-ingredient [ingredient]="ingredient"></app-ingredient>
+}

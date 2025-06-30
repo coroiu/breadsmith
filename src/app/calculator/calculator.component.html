@@ -2,35 +2,8 @@
 
 @for (ingredientType of data().ingredientTypes; track ingredientType) {
 <div class="mb-4">
-  <h2 class="mb-2">{{ ingredientType.name }}</h2>
-  @for (ingredient of ingredientType.ingredients; track ingredient) {
-  <p-fieldset class="mb-2" legend="{{ ingredient.name }}">
-    <div class="flex flex-row gap-6">
-      <p-inputgroup>
-        <p-floatlabel variant="on">
-          <p-inputnumber
-            inputId="{{ ingredientType }}-{{ ingredient }}"
-            [ngModel]="ingredient.amount"
-          />
-          <label for="{{ ingredientType }}-{{ ingredient }}">Percentage</label>
-        </p-floatlabel>
-
-        <p-inputgroup-addon>%</p-inputgroup-addon>
-      </p-inputgroup>
-
-      <p-inputgroup>
-        <p-floatlabel variant="on">
-          <p-inputnumber
-            inputId="{{ ingredientType }}-{{ ingredient }}"
-            [ngModel]="ingredient.amount"
-          />
-          <label for="{{ ingredientType }}-{{ ingredient }}">Weight</label>
-        </p-floatlabel>
-
-        <p-inputgroup-addon>g</p-inputgroup-addon>
-      </p-inputgroup>
-    </div>
-  </p-fieldset>
-  }
+  <app-ingredient-group
+    [ingredientType]="ingredientType"
+  ></app-ingredient-group>
 </div>
 }

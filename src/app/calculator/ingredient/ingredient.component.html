@@ -1,0 +1,27 @@
+<p-fieldset class="mb-2" legend="{{ ingredient().name }}">
+  <div class="flex flex-row gap-6">
+    <p-inputgroup>
+      <p-floatlabel variant="on">
+        <p-inputnumber
+          inputId="{{ ingredient().name }}-percentage"
+          [ngModel]="ingredient().amount"
+        />
+        <label for="{{ ingredient().name }}-percentage">Percentage</label>
+      </p-floatlabel>
+
+      <p-inputgroup-addon>%</p-inputgroup-addon>
+    </p-inputgroup>
+
+    <p-inputgroup>
+      <p-floatlabel variant="on">
+        <p-inputnumber
+          inputId="{{ ingredient().name }}-weight"
+          [ngModel]="ingredient().amount"
+        />
+        <label for="{{ ingredient().name }}-weight">Weight</label>
+      </p-floatlabel>
+
+      <p-inputgroup-addon>g</p-inputgroup-addon>
+    </p-inputgroup>
+  </div>
+</p-fieldset>
