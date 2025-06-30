@@ -1,7 +1,7 @@
 import { Component, computed, inject } from "@angular/core";
 import { DataService } from "../data/data.service";
 import { IngredientType, IngredientTypes } from "../data/recipe";
-import { UiData } from "./ui-data";
+import { UiData, UiIngredient } from "./ui-data";
 import { CommonModule } from "@angular/common";
 import { IngredientGroupComponent } from "./ingredient-group/ingredient-group.component";
 import { FormsModule } from "@angular/forms";
@@ -10,6 +10,7 @@ import { InputGroupModule } from "primeng/inputgroup";
 import { InputGroupAddonModule } from "primeng/inputgroupaddon";
 import { FloatLabelModule } from "primeng/floatlabel";
 import { FieldsetModule } from "primeng/fieldset";
+import { solve } from "./solver";
 
 @Component({
   selector: "app-calculator",
@@ -30,20 +31,25 @@ export class CalculatorComponent {
 
   protected data = computed((): UiData => {
     const recipe = this.dataService.getRecipe("default")();
+    const solvedRecipe = solve(recipe);
 
     return {
-      flourAmount: recipe.flourAmount,
+      flourAmount: solvedRecipe.flourAmount,
       ingredientTypes: IngredientTypes.map((type) => {
-        const ingredients = recipe.ingredients
+        const ingredients = solvedRecipe.ingredients
           .filter((ingredient) => ingredient.type === type)
-          .map((ingredient) => ({
-            name: ingredient.name,
-            amount: ingredient.amount,
-            type: ingredient.type,
-          }));
+          .map(
+            (ingredient) =>
+              ({
+                name: ingredient.name,
+                weight: ingredient.weight,
+                percentage: ingredient.percentage,
+                type: ingredient.type,
+              } satisfies UiIngredient)
+          );
 
         const total = ingredients
-          .map((i) => i.amount)
+          .map((i) => i.weight)
           .reduce((a, b) => a + b, 0);
 
         return {

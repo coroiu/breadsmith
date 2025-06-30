@@ -14,6 +14,7 @@ export interface UiIngredientType {
 
 export interface UiIngredient {
   name: string;
-  amount: number;
+  weight: number;
+  percentage: number;
   type: IngredientType;
 }

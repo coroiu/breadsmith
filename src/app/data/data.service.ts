@@ -4,13 +4,12 @@ import { Recipe } from "./recipe";
 const recipe: Recipe = {
   flourAmount: 500,
   ingredients: [
-    { name: "White flour", amount: 100, type: "flour" },
-    { name: "Water", amount: 300, type: "water" },
-    { name: "Salt", amount: 10, type: "other" },
-    { name: "Yeast", amount: 5, type: "other" },
-    { name: "Sugar", amount: 10, type: "other" },
-    { name: "Oil", amount: 20, type: "other" },
-    { name: "Milk", amount: 100, type: "other" },
+    { name: "White flour", percentage: 100, type: "flour" },
+    { name: "Water", percentage: 75, type: "water" },
+    { name: "Salt", percentage: 2.2, type: "other" },
+    { name: "Yeast", percentage: 2, type: "other" },
+    { name: "Sugar", percentage: 2, type: "other" },
+    { name: "Oil", percentage: 8, type: "other" },
   ],
 };
 

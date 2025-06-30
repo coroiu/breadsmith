@@ -4,7 +4,7 @@
       <p-floatlabel variant="on">
         <p-inputnumber
           inputId="{{ ingredient().name }}-percentage"
-          [ngModel]="ingredient().amount"
+          [ngModel]="ingredient().percentage"
         />
         <label for="{{ ingredient().name }}-percentage">Percentage</label>
       </p-floatlabel>
@@ -16,7 +16,7 @@
       <p-floatlabel variant="on">
         <p-inputnumber
           inputId="{{ ingredient().name }}-weight"
-          [ngModel]="ingredient().amount"
+          [ngModel]="ingredient().weight"
         />
         <label for="{{ ingredient().name }}-weight">Weight</label>
       </p-floatlabel>

@@ -5,7 +5,7 @@ export interface Recipe {
 
 export type Ingredient = {
   name: string;
-  amount: number;
+  percentage: number;
   type: IngredientType;
 };
 
