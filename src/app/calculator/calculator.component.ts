@@ -30,25 +30,56 @@ export class CalculatorComponent {
   private dataService = inject(DataService);
 
   protected data = computed((): UiData => {
-    const recipe = this.dataService.getRecipe("default")();
-    const solvedRecipe = solve(recipe);
+    const recipe = this.dataService.getRecipe("default");
+    const solvedRecipe = solve(recipe());
+    const ingredients = solvedRecipe.ingredients.map((ingredient, index) => ({
+      index,
+      ingredient,
+    }));
 
     return {
       flourAmount: solvedRecipe.flourAmount,
       ingredientTypes: IngredientTypes.map((type) => {
-        const ingredients = solvedRecipe.ingredients
-          .filter((ingredient) => ingredient.type === type)
+        const mappedIngredients = ingredients
+          .filter(({ ingredient }) => ingredient.type === type)
           .map(
-            (ingredient) =>
+            ({ ingredient, index }) =>
               ({
+                index,
                 name: ingredient.name,
                 weight: ingredient.weight,
                 percentage: ingredient.percentage,
                 type: ingredient.type,
+                setWeight: (weight: number) => {
+                  recipe.update((recipe) => {
+                    const newRecipe = {
+                      ...recipe,
+                      ingredients: [...recipe.ingredients],
+                    };
+                    newRecipe.ingredients[index] = {
+                      ...newRecipe.ingredients[index],
+                      percentage: (weight / solvedRecipe.flourAmount) * 100,
+                    };
+                    return newRecipe;
+                  });
+                },
+                setPercentage: (percentage: number) => {
+                  recipe.update((recipe) => {
+                    const newRecipe = {
+                      ...recipe,
+                      ingredients: [...recipe.ingredients],
+                    };
+                    newRecipe.ingredients[index] = {
+                      ...newRecipe.ingredients[index],
+                      percentage: percentage,
+                    };
+                    return newRecipe;
+                  });
+                },
               } satisfies UiIngredient)
           );
 
-        const total = ingredients
+        const total = mappedIngredients
           .map((i) => i.weight)
           .reduce((a, b) => a + b, 0);
 
@@ -56,7 +87,7 @@ export class CalculatorComponent {
           name: type.charAt(0).toUpperCase() + type.slice(1),
           value: type as IngredientType,
           total,
-          ingredients,
+          ingredients: mappedIngredients,
         };
       }),
     };

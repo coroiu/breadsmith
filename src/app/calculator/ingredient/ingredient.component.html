@@ -5,6 +5,10 @@
         <p-inputnumber
           inputId="{{ ingredient().name }}-percentage"
           [ngModel]="ingredient().percentage"
+          (ngModelChange)="ingredient().setPercentage($event)"
+          [min]="0"
+          [max]="100"
+          [step]="1"
         />
         <label for="{{ ingredient().name }}-percentage">Percentage</label>
       </p-floatlabel>
@@ -17,6 +21,9 @@
         <p-inputnumber
           inputId="{{ ingredient().name }}-weight"
           [ngModel]="ingredient().weight"
+          (ngModelChange)="ingredient().setWeight($event)"
+          [min]="0"
+          [step]="1"
         />
         <label for="{{ ingredient().name }}-weight">Weight</label>
       </p-floatlabel>

@@ -10,7 +10,7 @@
 
   <p-inputgroup-addon>g</p-inputgroup-addon>
 </p-inputgroup>
-@for (ingredientType of data().ingredientTypes; track ingredientType) {
+@for (ingredientType of data().ingredientTypes; track ingredientType.name) {
 <div class="mb-4">
   <app-ingredient-group
     [ingredientType]="ingredientType"

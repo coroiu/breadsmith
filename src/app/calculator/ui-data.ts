@@ -13,8 +13,11 @@ export interface UiIngredientType {
 }
 
 export interface UiIngredient {
+  index: number;
   name: string;
   weight: number;
   percentage: number;
   type: IngredientType;
+  setWeight: (weight: number) => void;
+  setPercentage: (percentage: number) => void;
 }
