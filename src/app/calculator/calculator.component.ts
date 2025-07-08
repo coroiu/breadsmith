@@ -39,6 +39,16 @@ export class CalculatorComponent {
 
     return {
       flourAmount: solvedRecipe.flourAmount,
+      setFlourAmount: (amount: number) => {
+        recipe.update((recipe) => {
+          const newRecipe = {
+            ...recipe,
+            ingredients: [...recipe.ingredients],
+          };
+          newRecipe.flourAmount = amount;
+          return newRecipe;
+        });
+      },
       ingredientTypes: IngredientTypes.map((type) => {
         const mappedIngredients = ingredients
           .filter(({ ingredient }) => ingredient.type === type)

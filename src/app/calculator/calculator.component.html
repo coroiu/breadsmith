@@ -4,6 +4,7 @@
     <p-inputnumber
       inputId="total-flour-weight"
       [ngModel]="data().flourAmount"
+      (ngModelChange)="data().setFlourAmount($event)"
     />
     <label for="total-flour-weight">Flour</label>
   </p-floatlabel>
