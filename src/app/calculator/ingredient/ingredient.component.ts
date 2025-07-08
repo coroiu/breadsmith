@@ -6,6 +6,7 @@ import { InputGroupModule } from "primeng/inputgroup";
 import { InputGroupAddonModule } from "primeng/inputgroupaddon";
 import { InputNumberModule } from "primeng/inputnumber";
 import { UiIngredient } from "../ui-data";
+import { ButtonModule } from "primeng/button";
 
 @Component({
   selector: "app-ingredient",
@@ -17,6 +18,7 @@ import { UiIngredient } from "../ui-data";
     InputGroupAddonModule,
     FloatLabelModule,
     FieldsetModule,
+    ButtonModule,
   ],
 })
 export class IngredientComponent {
