@@ -7,6 +7,7 @@ import { InputGroupAddonModule } from "primeng/inputgroupaddon";
 import { FloatLabelModule } from "primeng/floatlabel";
 import { FieldsetModule } from "primeng/fieldset";
 import { IngredientComponent } from "../ingredient/ingredient.component";
+import { ButtonModule } from "primeng/button";
 
 @Component({
   selector: "app-ingredient-group",
@@ -19,6 +20,7 @@ import { IngredientComponent } from "../ingredient/ingredient.component";
     FloatLabelModule,
     FieldsetModule,
     IngredientComponent,
+    ButtonModule,
   ],
 })
 export class IngredientGroupComponent {

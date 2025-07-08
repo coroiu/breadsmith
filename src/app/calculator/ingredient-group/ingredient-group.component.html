@@ -1,4 +1,15 @@
-<h2 class="mb-2">{{ ingredientType().name }}</h2>
-@for (ingredient of ingredientType().ingredients; track ingredient.index) {
-<app-ingredient [ingredient]="ingredient"></app-ingredient>
-}
+<div class="flex flex-col gap-4">
+  <h2>{{ ingredientType().name }}</h2>
+  @for (ingredient of ingredientType().ingredients; track ingredient.index) {
+  <app-ingredient [ingredient]="ingredient"></app-ingredient>
+  }
+
+  <p-button
+    class="self-end"
+    icon="pi pi-plus"
+    aria-label="Add ingredient"
+    label="Add {{ ingredientType().value }} ingredient"
+    variant="text"
+    severity="success"
+  />
+</div>
