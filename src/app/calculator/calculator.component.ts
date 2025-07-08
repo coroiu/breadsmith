@@ -76,6 +76,16 @@ export class CalculatorComponent {
                     return newRecipe;
                   });
                 },
+                delete: () => {
+                  recipe.update((recipe) => {
+                    const newRecipe = {
+                      ...recipe,
+                      ingredients: [...recipe.ingredients],
+                    };
+                    newRecipe.ingredients.splice(index, 1);
+                    return newRecipe;
+                  });
+                },
               } satisfies UiIngredient)
           );
 
@@ -88,6 +98,20 @@ export class CalculatorComponent {
           value: type as IngredientType,
           total,
           ingredients: mappedIngredients,
+          addIngredient: () => {
+            recipe.update((recipe) => {
+              const newRecipe = {
+                ...recipe,
+                ingredients: [...recipe.ingredients],
+              };
+              newRecipe.ingredients.push({
+                name: "New ingredient",
+                percentage: 0,
+                type,
+              });
+              return newRecipe;
+            });
+          },
         };
       }),
     };

@@ -10,6 +10,7 @@ export interface UiIngredientType {
   value: IngredientType;
   total: number;
   ingredients: UiIngredient[];
+  addIngredient: () => void;
 }
 
 export interface UiIngredient {
@@ -20,4 +21,5 @@ export interface UiIngredient {
   type: IngredientType;
   setWeight: (weight: number) => void;
   setPercentage: (percentage: number) => void;
+  delete: () => void;
 }
