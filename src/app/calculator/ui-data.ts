@@ -19,6 +19,7 @@ export interface UiIngredient {
   weight: number;
   percentage: number;
   type: IngredientType;
+  setName: (name: string) => void;
   setWeight: (weight: number) => void;
   setPercentage: (percentage: number) => void;
   delete: () => void;

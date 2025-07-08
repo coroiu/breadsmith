@@ -50,6 +50,19 @@ export class CalculatorComponent {
                 weight: ingredient.weight,
                 percentage: ingredient.percentage,
                 type: ingredient.type,
+                setName: (name: string) => {
+                  recipe.update((recipe) => {
+                    const newRecipe = {
+                      ...recipe,
+                      ingredients: [...recipe.ingredients],
+                    };
+                    newRecipe.ingredients[index] = {
+                      ...newRecipe.ingredients[index],
+                      name,
+                    };
+                    return newRecipe;
+                  });
+                },
                 setWeight: (weight: number) => {
                   recipe.update((recipe) => {
                     const newRecipe = {

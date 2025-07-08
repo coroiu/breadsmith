@@ -1,5 +1,26 @@
-<p-fieldset legend="{{ ingredient().name }}">
-  <div class="flex flex-row gap-6">
+<p-fieldset>
+  <ng-template #header>
+    <p-inplace>
+      <ng-template #display>
+        <span class="cursor-pointer decoration-dashed hover:underline"
+          >{{ ingredient().name }}
+        </span>
+      </ng-template>
+      <ng-template #content let-closeCallback="closeCallback">
+        <input
+          [pAutoFocus]="true"
+          pInputText
+          [ngModel]="ingredient().name"
+          (ngModelChange)="ingredient().setName($event)"
+          placeholder="Ingredient name"
+          (blur)="closeCallback()"
+          (keydown.enter)="closeCallback()"
+        />
+      </ng-template>
+    </p-inplace>
+  </ng-template>
+
+  <div class="flex flex-row gap-6 mt-3">
     <p-inputgroup>
       <p-floatlabel variant="on">
         <p-inputnumber
