@@ -49,6 +49,10 @@ export class CalculatorComponent {
           return newRecipe;
         });
       },
+      totalWeight: solvedRecipe.ingredients.reduce(
+        (total, ingredient) => total + ingredient.weight,
+        0
+      ),
       ingredientTypes: IngredientTypes.map((type) => {
         const mappedIngredients = ingredients
           .filter(({ ingredient }) => ingredient.type === type)

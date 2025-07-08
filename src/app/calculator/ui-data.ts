@@ -4,6 +4,7 @@ export interface UiData {
   flourAmount: number;
   ingredientTypes: UiIngredientType[];
   setFlourAmount: (amount: number) => void;
+  totalWeight: number;
 }
 
 export interface UiIngredientType {
